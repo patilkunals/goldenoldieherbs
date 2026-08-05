@@ -25,7 +25,7 @@ export default function HeroSection() {
       <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float" aria-hidden />
       <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-terracotta/20 blur-3xl animate-float" style={{ animationDelay: '1.5s' }} aria-hidden />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 w-full">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-sand text-xs font-semibold tracking-wide uppercase mb-6">
             🍃 Authentic Ayurveda, Modern Care
@@ -61,7 +61,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
+          className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
         >
           {badges.map((b) => (
             <div

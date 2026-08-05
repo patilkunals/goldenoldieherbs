@@ -28,7 +28,7 @@ export default function DoctorCards() {
   }
 
   return (
-    <section id="specialists" className="py-20 scroll-mt-[var(--nav-height)]">
+    <section id="specialists" className="py-12 scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div className="max-w-xl">
@@ -61,7 +61,7 @@ export default function DoctorCards() {
               </div>
 
               <div className="mt-4 flex items-center justify-between">
-                <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-full bg-primary text-sand font-medium text-sm hover:opacity-90 transition-opacity">Book Appointment</button>
+                <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-full bg-primary !text-sand font-medium text-sm hover:opacity-90 transition-opacity">Book Appointment</button>
                 <a href={`#${doc.id}`} className="text-sm text-primary hover:underline">View Profile</a>
               </div>
             </motion.article>
@@ -85,7 +85,7 @@ export default function DoctorCards() {
               <input name="date" type="date" className="w-full px-3 py-2 border rounded-md" />
               <textarea name="message" placeholder="Short message" className="w-full px-3 py-2 border rounded-md" />
               <div className="flex items-center justify-between">
-                <button type="submit" className="px-4 py-2 rounded-md bg-primary text-sand font-medium">Request Appointment</button>
+                <button type="submit" className="px-4 py-2 rounded-md bg-primary !text-sand font-medium">Request Appointment</button>
                 <button type="button" onClick={closeBooking} className="px-4 py-2 rounded-md border">Cancel</button>
               </div>
             </form>

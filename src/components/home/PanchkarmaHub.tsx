@@ -12,7 +12,7 @@ export default function PanchkarmaHub() {
   }
 
   return (
-    <section id="panchkarma" className="py-20 bg-parchment scroll-mt-[var(--nav-height)]">
+    <section id="panchkarma" className="py-12 bg-parchment scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-xl mb-10">
           <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">Detox &amp; Rejuvenation</span>

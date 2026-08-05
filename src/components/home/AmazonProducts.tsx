@@ -15,7 +15,7 @@ export default function AmazonProducts() {
   }
 
   return (
-    <section id="products" className="py-16 bg-sand">
+    <section id="products" className="py-10 bg-sand">
       <div className="max-w-7xl mx-auto px-6">
         <div id="b2b" className="scroll-mt-[var(--nav-height)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <h2 className="text-2xl font-heading text-charcoal">Featured Formulations</h2>
@@ -33,7 +33,7 @@ export default function AmazonProducts() {
                 {p.priceINR && <div className="text-sm text-charcoal/90">₹{p.priceINR}</div>}
               </div>
               <div className="flex items-center gap-3">
-                <a href={p.amazonLink} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary text-sand text-sm font-medium hover:opacity-90 transition-opacity">Buy on Amazon India</a>
+                <a href={p.amazonLink} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary !text-sand text-sm font-medium hover:opacity-90 transition-opacity">Buy on Amazon India</a>
                 {p.b2bAvailable && <span className="text-xs px-2.5 py-1 rounded-full bg-gold text-charcoal font-semibold">B2B</span>}
               </div>
             </motion.article>
@@ -57,7 +57,7 @@ export default function AmazonProducts() {
               <input name="phone" placeholder="Phone" required className="px-3 py-2 border rounded-md" />
               <textarea name="requirements" placeholder="Products / Quantities" className="col-span-1 sm:col-span-2 px-3 py-2 border rounded-md" />
               <div className="col-span-1 sm:col-span-2 flex items-center justify-end gap-3">
-                <button type="submit" className="px-4 py-2 rounded-md bg-primary text-sand font-medium">Submit Inquiry</button>
+                <button type="submit" className="px-4 py-2 rounded-md bg-primary !text-sand font-medium">Submit Inquiry</button>
                 <button type="button" onClick={() => setB2bOpen(false)} className="px-4 py-2 rounded-md border">Cancel</button>
               </div>
             </form>

@@ -14,7 +14,7 @@ export default function ConsultCTA() {
   }
 
   return (
-    <section id="consult" className="relative py-20 overflow-hidden">
+    <section id="consult" className="relative py-12 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-dark" aria-hidden />
       <div className="absolute -top-16 right-10 w-72 h-72 rounded-full bg-gold/10 blur-3xl" aria-hidden />
 
@@ -53,7 +53,7 @@ export default function ConsultCTA() {
             <option>Joint & Orthopedic Care</option>
             <option>Digestive Health</option>
           </select>
-          <button type="submit" className="w-full px-4 py-3 rounded-lg bg-primary text-sand font-semibold hover:opacity-90 transition-opacity">
+          <button type="submit" className="w-full px-4 py-3 rounded-lg bg-primary !text-sand font-semibold hover:opacity-90 transition-opacity">
             Request a Callback
           </button>
           {sent && <p className="text-xs text-primary/80 text-center">Thanks — our team will reach out shortly.</p>}

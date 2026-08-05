@@ -26,7 +26,7 @@ const items = [
 
 export default function BentoGrid() {
   return (
-    <section id="pillars" className="py-20 scroll-mt-[var(--nav-height)]">
+    <section id="pillars" className="py-12 scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-xl mb-10">
           <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">What we do</span>

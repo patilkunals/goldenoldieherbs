@@ -31,7 +31,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-3">
-              <Link href="#consult" className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
+              <Link href="#consult" className="inline-flex items-center px-4 py-2 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
               <a href="https://www.amazon.in" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon India</a>
             </div>
 
@@ -60,7 +60,7 @@ export default function Navbar() {
               <Link href="#specialists" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Specialists</Link>
               <Link href="#b2b" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">B2B</Link>
               <Link href="#products" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Products</Link>
-              <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
+              <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
               <a href="https://www.amazon.in" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon India</a>
             </div>
           </div>
