@@ -33,16 +33,20 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6">
         <h3 className="text-xl font-heading text-charcoal mb-4">Patient Stories</h3>
 
-        <div className="overflow-hidden rounded-lg">
+        <div className="overflow-hidden rounded-lg [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
           <motion.div
-            className="flex gap-8 items-center"
-            animate={{ x: [ '0%', '-50%' ] }}
-            transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+            className="flex gap-6 items-stretch w-max"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
           >
             {items.map((t, i) => (
-                <div key={`${t.id}-${i}`} className="min-w-[280px] bg-sand/80 p-4 rounded-md border shadow-sm">
-                <div className="text-sm text-charcoal/80 mb-2">“{t.text}”</div>
-                <div className="text-sm font-semibold text-primary">— {t.name}</div>
+              <div
+                key={`${t.id}-${i}`}
+                className="w-[300px] shrink-0 bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="text-gold text-lg mb-2">★★★★★</div>
+                <p className="text-sm text-charcoal/80 mb-3 line-clamp-4">&ldquo;{t.text}&rdquo;</p>
+                <div className="text-sm font-semibold text-primary">&mdash; {t.name}</div>
               </div>
             ))}
           </motion.div>

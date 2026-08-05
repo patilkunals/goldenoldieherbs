@@ -12,24 +12,28 @@ export default function PanchkarmaHub() {
   }
 
   return (
-    <section id="panchkarma" className="py-16 bg-parchment">
+    <section id="panchkarma" className="py-20 bg-parchment scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-2xl md:text-3xl font-heading text-charcoal mb-6">Panchkarma Experience Hub</h2>
+        <div className="max-w-xl mb-10">
+          <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">Detox &amp; Rejuvenation</span>
+          <h2 className="text-2xl md:text-4xl font-heading text-charcoal">Panchkarma Experience Hub</h2>
+          <p className="mt-3 text-charcoal/70">Five classical detoxification therapies, guided by certified Panchkarma consultants.</p>
+        </div>
 
         <div className="space-y-4">
           {panchkarma.map((t: PanchkarmaTherapy) => (
-            <article key={t.id} className="rounded-xl overflow-hidden border bg-white shadow-sm">
+            <article key={t.id} className="rounded-2xl overflow-hidden border border-charcoal/5 bg-white shadow-sm hover:shadow-md transition-shadow">
               <button
                 type="button"
                 aria-expanded={open === t.id}
                 onClick={() => toggle(t.id)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left"
+                className="w-full flex items-center justify-between px-6 py-5 text-left"
               >
                 <div>
                   <div className="text-lg font-semibold text-charcoal">{t.name}</div>
                   <div className="text-sm text-charcoal/70">Duration: {t.duration} {t.sessionCount ? `· Sessions: ${t.sessionCount}` : ''}</div>
                 </div>
-                <div className="ml-4 text-charcoal/60">{open === t.id ? '−' : '+'}</div>
+                <div className="ml-4 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary font-semibold shrink-0">{open === t.id ? '−' : '+'}</div>
               </button>
 
               {open === t.id && (

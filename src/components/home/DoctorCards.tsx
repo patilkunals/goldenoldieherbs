@@ -28,13 +28,16 @@ export default function DoctorCards() {
   }
 
   return (
-    <section id="specialists" className="py-16">
+    <section id="specialists" className="py-20 scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-heading text-charcoal">Our Specialists</h2>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div className="max-w-xl">
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">Our Team</span>
+            <h2 className="text-2xl md:text-4xl font-heading text-charcoal">Our Specialists</h2>
+          </div>
           <div className="flex items-center gap-3">
             <label className="text-sm text-charcoal/80">Filter:</label>
-            <select value={filter} onChange={e => setFilter(e.target.value)} className="px-3 py-2 rounded-md border">
+            <select value={filter} onChange={e => setFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-charcoal/15 focus:border-gold focus:outline-none">
               {specializations.map(s => (
                 <option key={s} value={s}>{s}</option>
               ))}
@@ -44,9 +47,9 @@ export default function DoctorCards() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(doc => (
-            <motion.article key={doc.id} whileHover={{ y: -6 }} className="rounded-xl p-5 bg-white/60 border hover:border-gold transition-shadow shadow-sm">
+            <motion.article key={doc.id} whileHover={{ y: -6 }} className="rounded-2xl p-5 bg-white border border-charcoal/5 hover:border-gold/60 hover:shadow-lg transition-all duration-300">
               <div className="flex items-start gap-4">
-                <SafeImage src={doc.image} alt={doc.name} className="w-20 h-20 object-cover rounded-md flex-shrink-0" />
+                <SafeImage src={doc.image} alt={doc.name} className="w-20 h-20 object-cover rounded-xl flex-shrink-0 ring-2 ring-gold/20" />
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold text-charcoal">{doc.name}</h3>
@@ -58,7 +61,7 @@ export default function DoctorCards() {
               </div>
 
               <div className="mt-4 flex items-center justify-between">
-                <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-md bg-primary text-sand font-medium">Book Appointment</button>
+                <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-full bg-primary text-sand font-medium text-sm hover:opacity-90 transition-opacity">Book Appointment</button>
                 <a href={`#${doc.id}`} className="text-sm text-primary hover:underline">View Profile</a>
               </div>
             </motion.article>

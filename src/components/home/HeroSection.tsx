@@ -2,39 +2,81 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+const badges = [
+  { icon: '★', label: '50,000+ Patients', sub: 'Healed & supported' },
+  { icon: '✓', label: 'Certified Specialists', sub: 'Board & clinic certified' },
+  { icon: '⟳', label: '5 Panchkarma Therapies', sub: 'Classical protocols' },
+]
+
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-[80vh] flex items-center" aria-label="Hero">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=1d5ee0b4b8f7b8d2b1f0a3b6f6b9a3c6')] bg-cover bg-center" />
+    <section className="relative w-full min-h-[92vh] flex items-center overflow-hidden pt-[var(--nav-height)]" aria-label="Hero">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center scale-105"
+        aria-hidden
+      />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-[rgba(244,239,230,0.6)] to-[rgba(30,58,43,0.6)]" />
+      {/* Layered gradient for legibility + brand tone */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/85 via-primary/70 to-terracotta/40" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-sand via-sand/10 to-transparent" aria-hidden />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <h1 className="text-4xl md:text-6xl font-heading leading-tight text-charcoal drop-shadow-sm">Ancient Ayurvedic Wisdom Meets Modern Clinical Excellence.</h1>
-          <p className="mt-4 text-lg text-charcoal/90 max-w-2xl">A curated blend of classical Ayurveda and modern clinical practice—personalised care, authentic formulations, and trusted Panchkarma therapies.</p>
+      {/* Decorative floating orbs */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float" aria-hidden />
+      <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-terracotta/20 blur-3xl animate-float" style={{ animationDelay: '1.5s' }} aria-hidden />
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link href="#panchkarma" className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-sand font-semibold hover:opacity-95">Explore Panchkarma</Link>
-            <Link href="#consult" className="inline-flex items-center px-6 py-3 rounded-md border-2 border-gold text-charcoal bg-transparent font-semibold">Consult a Specialist</Link>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-sand text-xs font-semibold tracking-wide uppercase mb-6">
+            🍃 Authentic Ayurveda, Modern Care
+          </span>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading leading-[1.05] text-sand drop-shadow-sm">
+            Ancient Ayurvedic Wisdom Meets{' '}
+            <span className="text-gold italic font-display">Modern Clinical Excellence</span>
+          </h1>
+
+          <p className="mt-6 text-lg text-sand/90 max-w-2xl">
+            A curated blend of classical Ayurveda and modern clinical practice&mdash;personalised care, authentic formulations, and trusted Panchkarma therapies.
+          </p>
+
+          <div className="mt-9 flex flex-col sm:flex-row gap-4">
+            <Link
+              href="#panchkarma"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-gold text-charcoal font-semibold shadow-[0_8px_30px_rgba(212,175,55,0.35)] hover:shadow-[0_8px_36px_rgba(212,175,55,0.55)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Explore Panchkarma
+            </Link>
+            <Link
+              href="#consult"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-sand/60 text-sand font-semibold backdrop-blur-sm hover:bg-sand/10 hover:border-sand transition-all duration-300"
+            >
+              Consult a Specialist
+            </Link>
           </div>
         </motion.div>
 
-        {/* Floating badges */}
-        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5, type: 'spring' }} className="absolute left-6 top-32 bg-white/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-gold text-charcoal flex items-center justify-center font-semibold">★</div>
-          <div>
-            <div className="text-sm font-semibold">50,000+ Patients</div>
-            <div className="text-xs text-charcoal/70">Healed & Supported</div>
-          </div>
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.7, type: 'spring' }} className="absolute right-6 top-44 bg-white/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary text-sand flex items-center justify-center font-semibold">✓</div>
-          <div>
-            <div className="text-sm font-semibold">Certified Specialists</div>
-            <div className="text-xs text-charcoal/70">Board & Clinic Certified</div>
-          </div>
+        {/* Trust badges row — sits below content, never overlaps text */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
+        >
+          {badges.map((b) => (
+            <div
+              key={b.label}
+              className="flex items-center gap-3 bg-white/90 backdrop-blur-md rounded-2xl px-4 py-3 shadow-lg border border-white/40"
+            >
+              <div className="w-10 h-10 shrink-0 rounded-full bg-gradient-to-br from-gold to-terracotta text-sand flex items-center justify-center font-semibold text-lg">
+                {b.icon}
+              </div>
+              <div className="min-w-0">
+                <div className="text-sm font-semibold text-charcoal truncate">{b.label}</div>
+                <div className="text-xs text-charcoal/60 truncate">{b.sub}</div>
+              </div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

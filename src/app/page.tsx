@@ -6,6 +6,7 @@ import PanchkarmaHub from '../components/home/PanchkarmaHub'
 import DoctorCards from '../components/home/DoctorCards'
 import AmazonProducts from '../components/home/AmazonProducts'
 import Testimonials from '../components/home/Testimonials'
+import ConsultCTA from '../components/home/ConsultCTA'
 import Footer from '../components/layout/Footer'
 import { motion } from 'framer-motion'
 
@@ -27,7 +28,7 @@ export default function Page() {
   return (
     <SmoothScroll>
       <motion.main initial="hidden" animate="show" variants={container} className="min-h-screen">
-        <motion.section variants={sectionVariant} className="pt-8">
+        <motion.section variants={sectionVariant}>
           <HeroSection />
         </motion.section>
 
@@ -49,6 +50,10 @@ export default function Page() {
 
         <motion.section variants={sectionVariant} className="py-12">
           <Testimonials />
+        </motion.section>
+
+        <motion.section variants={sectionVariant}>
+          <ConsultCTA />
         </motion.section>
 
         <motion.section variants={sectionVariant} className="pt-8">
