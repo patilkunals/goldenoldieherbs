@@ -1,0 +1,10 @@
+{"timestamp":"00:00:01.585","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:02.923","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:00:03.119","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/#clinics\\\"}\""}
+{"timestamp":"00:00:03.139","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/#clinics\\\"}\""}
+{"timestamp":"00:05:33.570","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:05:33.641","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/#clinics\\\"}\""}
+{"timestamp":"00:05:33.657","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/#clinics\\\"}\""}
+{"timestamp":"00:05:38.788","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:05:38.839","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/\\\"}\""}
+{"timestamp":"00:05:38.853","source":"Server","level":"WARN","message":"Received extension log from client: \"{\\\"found\\\":[],\\\"removed\\\":[],\\\"href\\\":\\\"http://localhost:3000/\\\"}\""}

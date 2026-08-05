@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 64, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/kunalpatil/workspace/personal/goldenoldieherbs/src/app/api/extension-logs/route.ts"],"sourcesContent":["import { NextResponse } from 'next/server'\r\n\r\nexport async function POST(req: Request) {\r\n  try {\r\n    const body = await req.json()\r\n    // Log on the server terminal for diagnosis\r\n    // eslint-disable-next-line no-console\r\n    console.warn('Received extension log from client:', JSON.stringify(body))\r\n  } catch (e) {\r\n    // eslint-disable-next-line no-console\r\n    console.error('Failed to parse extension log payload', e)\r\n  }\r\n\r\n  return NextResponse.json({ ok: true })\r\n}\r\n"],"names":["POST","req","body","json","console","warn","JSON","stringify","e","error","ok"],"mappings":";;;;AAAA;;AAEO,eAAeA,KAAKC,GAAY;IACrC,IAAI;QACF,MAAMC,OAAO,MAAMD,IAAIE,IAAI;QAC3B,2CAA2C;QAC3C,sCAAsC;QACtCC,QAAQC,IAAI,CAAC,uCAAuCC,KAAKC,SAAS,CAACL;IACrE,EAAE,OAAOM,GAAG;QACV,sCAAsC;QACtCJ,QAAQK,KAAK,CAAC,yCAAyCD;IACzD;IAEA,OAAO,gJAAY,CAACL,IAAI,CAAC;QAAEO,IAAI;IAAK;AACtC"}}]
+}

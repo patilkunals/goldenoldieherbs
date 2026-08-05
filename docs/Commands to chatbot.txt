@@ -1,0 +1,54 @@
+Step 1: Design Tokens & Project Configuration
+@PROJECT_INSTRUCTIONS.md Read the specification file. Let's start with Step 1. Generate the custom `tailwind.config.js` incorporating our exact color palette (#1E3A2B, #D4AF37, #FBF9F5, #1F2421, #B85B35) and typography settings (Playfair Display and Plus Jakarta Sans). Also, provide the setup for `src/app/globals.css` with smooth scroll behavior.
+
+Step 2: Data Schemas & Static Content
+@PROJECT_INSTRUCTIONS.md Refer to Section 6 (Step 2) and Section 4. Generate the static mock data TypeScript files under `src/data/`:
+1. `doctors.ts` (Specialists, qualifications, images, availability)
+2. `panchkarma.ts` (The 5 detox therapies with duration, steps, benefits)
+3. `products.ts` (Top herbal formulations with Amazon India links and ratings)
+Ensure all types are strictly defined.
+
+Step 3: Layout Wrapper & Glassmorphism Navbar
+@PROJECT_INSTRUCTIONS.md Refer to Section 4A. Build the sticky Glassmorphism `Navbar.tsx` component in `src/components/layout/Navbar.tsx`. It needs:
+- Goldenoldieherbs brand logo with a gold leaf icon
+- Navigation links for Clinics, Panchkarma, Specialists, B2B, Products
+- Two CTA buttons: "Book Consultation" (Primary) and "Buy on Amazon India" (Gold accent badge)
+- Mobile responsive burger menu
+
+Step 4: Hero Section & Motion Effects
+@PROJECT_INSTRUCTIONS.md Refer to Section 4B. Build `HeroSection.tsx` using Framer Motion animations. Include:
+- Headline: "Ancient Ayurvedic Wisdom Meets Modern Clinical Excellence."
+- Floating achievement stats badges ("50,000+ Patients Healed", "Certified Specialists")
+- Dual interactive CTAs: "Explore Panchkarma" and "Consult a Specialist"
+- Warm, earthy background overlay with gold accents
+
+Step 5: Core Business Pillars Bento Grid
+@PROJECT_INSTRUCTIONS.md Refer to Section 4C. Build `BentoGrid.tsx` in `src/components/home/`. Construct an interactive Bento Grid showcasing the 4 core arms:
+1. Ayurvedic Clinic
+2. Panchkarma Center
+3. Multi-Specialist Clinic
+4. B2B Medicine Distribution & Amazon Seller
+Use hover animations and subtle gold glowing borders.
+
+Step 6: Interactive Panchkarma Experience Hub
+@PROJECT_INSTRUCTIONS.md Refer to Section 4D. Build `PanchkarmaHub.tsx` using Shadcn/Radix Tabs or Accordion components. Map through the data from `@src/data/panchkarma.ts` to display the 5 therapies with step-by-step breakdowns, durations, and high-quality image cards.
+
+Step 7: Multi-Specialist Directory & Doctor Cards
+@PROJECT_INSTRUCTIONS.md Refer to Section 4E. Build `DoctorCards.tsx` using `@src/data/doctors.ts`. Create a filterable grid where users can filter doctors by specialization. Each card must include a "Book Appointment" CTA that triggers a modal drawer.
+
+Step 8: E-Commerce Showcase & B2B Distribution Banner
+@PROJECT_INSTRUCTIONS.md Refer to Section 4F. Build `AmazonProducts.tsx` using `@src/data/products.ts`.
+- Create product cards with direct "Buy on Amazon India" buttons.
+- Add a dedicated modern CTA box for B2B Wholesale/Distributor inquiries with a popup form trigger.
+
+Step 9: Testimonials Marquee & Footer
+@PROJECT_INSTRUCTIONS.md Refer to Section 4G and 4H. Build:
+1. `Testimonials.tsx`: An infinite moving marquee featuring verified patient stories.
+2. `Footer.tsx`: Glassmorphism footer with quick booking links, clinic location map placeholder, operating hours, and standard Ayurvedic medical disclaimers.
+
+Step 10: Smooth Scroll Integration & Main Page Assembly
+@PROJECT_INSTRUCTIONS.md Refer to Sections 3 and 5. 
+1. Set up Lenis smooth scrolling wrapper inside `src/components/ui/SmoothScroll.tsx`.
+2. Assemble all section components into `src/app/page.tsx` with Framer Motion scroll-reveal stagger effects across the entire page.
+
+
