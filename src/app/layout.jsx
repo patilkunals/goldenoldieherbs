@@ -3,7 +3,7 @@ import CleanupInjectedAttributes from '../components/ui/CleanupInjectedAttribute
 import Navbar from '../components/layout/Navbar'
 
 export const metadata = {
-  title: 'Goldenoldieherbs',
+  title: 'Golden Oldie Herbs',
   description: 'Ancient Ayurvedic Wisdom Meets Modern Clinical Excellence',
   icons: {
     icon: '/favicon.svg',

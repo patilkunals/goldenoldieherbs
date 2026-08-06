@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4">
             <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal">🍃</span>
-            <span className="font-heading text-lg text-sand">Goldenoldieherbs</span>
+            <span className="font-heading text-lg text-sand">Golden Oldie Herbs</span>
           </Link>
           <p className="text-sm text-sand/70">Authentic Ayurvedic care, Panchkarma therapies, and trusted herbal formulations.</p>
           <div className="mt-4 text-sm text-sand/60 space-y-1">
@@ -37,7 +37,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10 py-4">
         <div className="max-w-7xl mx-auto px-6 text-sm text-sand/50 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div>© {new Date().getFullYear()} Goldenoldieherbs</div>
+          <div>© {new Date().getFullYear()} Golden Oldie Herbs</div>
           <div className="flex items-center gap-3">
             <a href="#" className="hover:underline">Privacy</a>
             <a href="#" className="hover:underline">Terms</a>

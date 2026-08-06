@@ -12,13 +12,14 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal shadow-sm">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                    <path d="M12 2C12 2 16 4 18 8C20 12 18 16 14 18C10 20 8 18 6 16C4 14 4 10 6 8C8 6 10 4 12 2Z" fill="#1E3A2B" />
-                    <path d="M12 6C13.5 8 15 9 16 10.5C17 12 16.5 13.5 15 14.5C13.5 15.5 12 15 10.5 14C9 13 9 11 10.5 9.5C12 8 12 6 12 6Z" fill="#D4AF37" />
-                  </svg>
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal shadow-sm overflow-hidden">
+                  <img
+                    src="/goldenoldieherbs_logo.jpg"
+                    alt="Golden Oldie Herbs logo"
+                    className="h-full w-full object-contain"
+                  />
                 </span>
-                <span className="font-heading text-lg text-charcoal">Goldenoldieherbs</span>
+                <span className="font-heading text-lg text-charcoal">Golden Oldie Herbs</span>
               </Link>
             </div>
 

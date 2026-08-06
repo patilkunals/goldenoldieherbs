@@ -10,7 +10,7 @@ const testimonials = [
   {
     id: 't2',
     name: 'Vikram S.',
-    text: 'Excellent care and authentic herbal formulations. Highly recommend Goldenoldieherbs.'
+    text: 'Excellent care and authentic herbal formulations. Highly recommend Golden Oldie Herbs.'
   },
   {
     id: 't3',
