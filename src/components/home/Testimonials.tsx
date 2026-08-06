@@ -30,6 +30,90 @@ const testimonials: { id: string; name: string; text: string; gender: Gender; im
     text: 'Basti therapy helped my joint pain significantly — knowledgeable practitioners.',
     gender: 'male',
   },
+    {
+    id: 't5',
+    name: 'Rajesh Kate',
+    text: 'Professional specialists and a compassionate clinic team. My skin cleared up in weeks.',
+    gender: 'male',
+  },
+  {
+    id: 't6',
+    name: 'Manjush Kumar',
+    text: 'Basti therapy helped my joint pain significantly — knowledgeable practitioners.',
+    gender: 'male',
+  },
+    {
+    id: 't7',
+    name: 'Chadrashekhar Patil',
+    text: 'Professional specialists and a compassionate clinic team. My skin cleared up in weeks.',
+    gender: 'male',
+  },
+  {
+    id: 't8',
+    name: 'Anthony Johnson',
+    text: 'Basti therapy helped my joint pain significantly — knowledgeable practitioners.',
+    gender: 'male',
+  },
+  {
+    id: 't9',
+    name: 'Sunita M.',
+    text: 'The Shirodhara treatment was incredibly relaxing. My sleep quality has never been better.',
+    gender: 'female',
+  },
+  {
+    id: 't10',
+    name: 'Arjun Verma',
+    text: 'I struggled with acidity for years. Their dietary advice and herbal supplements worked wonders.',
+    gender: 'male',
+  },
+  {
+    id: 't11',
+    name: 'Kavita Joshi',
+    text: 'Amazing holistic approach. The Abhyanga massage relieved my muscle stiffness completely.',
+    gender: 'female',
+  },
+  {
+    id: 't12',
+    name: 'Rahul T.',
+    text: 'I appreciate how the doctors took the time to understand my dosha before prescribing any herbs.',
+    gender: 'male',
+  },
+  {
+    id: 't13',
+    name: 'Priya Desai',
+    text: 'The Nasya treatment really helped clear my chronic sinus issues. Highly grateful to the team.',
+    gender: 'female',
+  },
+  {
+    id: 't14',
+    name: 'Amit Bhardwaj',
+    text: 'Golden Oldie Herbs changed my perspective on natural healing. My energy levels are finally stable.',
+    gender: 'male',
+  },
+  {
+    id: 't15',
+    name: 'Neha Sharma',
+    text: 'Weight management felt impossible until I started their customized Ayurvedic detox program.',
+    gender: 'female',
+  },
+  {
+    id: 't16',
+    name: 'Sanjay Gupta',
+    text: 'Authentic treatments and a very peaceful environment. My migraines have drastically reduced.',
+    gender: 'male',
+  },
+  {
+    id: 't17',
+    name: 'Aarti K.',
+    text: 'The herbal face packs and internal medicines gave me a natural glow that no cosmetic ever did.',
+    gender: 'female',
+  },
+  {
+    id: 't18',
+    name: 'Rohan Mehta',
+    text: 'I was skeptical at first, but the knee pain relief from Janu Basti has been life-changing.',
+    gender: 'male',
+  },
 ]
 
 function DefaultAvatar({ gender }: { gender: Gender }) {
