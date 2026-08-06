@@ -1,28 +1,64 @@
 "use client"
 import { motion } from 'framer-motion'
 
-const testimonials = [
+type Gender = 'male' | 'female' | 'boy' | 'girl'
+
+const testimonials: { id: string; name: string; text: string; gender: Gender; image?: string }[] = [
   {
     id: 't1',
     name: 'Anjali R.',
-    text: 'After Panchkarma therapy I feel renewed — chronic fatigue reduced and digestion improved.'
+    text: 'After Panchkarma therapy I feel renewed — chronic fatigue reduced and digestion improved.',
+    gender: 'female',
   },
   {
     id: 't2',
     name: 'Vikram S.',
-    text: 'Excellent care and authentic herbal formulations. Highly recommend Golden Oldie Herbs.'
+    text: 'Excellent care and authentic herbal formulations. Highly recommend Golden Oldie Herbs.',
+    gender: 'male',
   },
   {
     id: 't3',
     name: 'Meera P.',
-    text: 'Professional specialists and a compassionate clinic team. My skin cleared up in weeks.'
+    text: 'Professional specialists and a compassionate clinic team. My skin cleared up in weeks.',
+    gender: 'female',
   },
   {
     id: 't4',
     name: 'Deepak N.',
-    text: 'Basti therapy helped my joint pain significantly — knowledgeable practitioners.'
+    text: 'Basti therapy helped my joint pain significantly — knowledgeable practitioners.',
+    gender: 'male',
   },
 ]
+
+function DefaultAvatar({ gender }: { gender: Gender }) {
+  // Simple inline SVG avatars per gender/age-group — no external image requests, easy to restyle.
+  const isChild = gender === 'boy' || gender === 'girl'
+  const skin = '#E8C39E'
+  const hair = gender === 'male' || gender === 'boy' ? '#3B2A20' : '#4A2E1E'
+
+  return (
+    <svg viewBox="0 0 64 64" className="w-full h-full" role="img" aria-label={`${gender} avatar`}>
+      <circle cx="32" cy="32" r="32" fill="var(--color-primary)" opacity="0.12" />
+      <circle cx="32" cy={isChild ? 27 : 26} r={isChild ? 11 : 12} fill={skin} />
+      <path
+        d={
+          gender === 'male'
+            ? 'M18 24c0-8 6-14 14-14s14 6 14 14c-3-2-8-4-14-4s-11 2-14 4z'
+            : gender === 'female'
+            ? 'M16 26c0-9 7-16 16-16s16 7 16 16c0 4-1 7-2 9-1-6-3-9-6-9 1 3 1 6 0 9-2-2-4-3-8-3s-6 1-8 3c-1-3-1-6 0-9-3 0-5 3-6 9-1-2-2-5-2-9z'
+            : gender === 'boy'
+            ? 'M20 22c0-7 5.5-12 12-12s12 5 12 12c-2.5-1.5-7-3-12-3s-9.5 1.5-12 3z'
+            : 'M18 23c0-8 6-14 14-14s14 6 14 14c0 3-.5 5.5-1.5 7.5-1-4-2.5-6-5-6 .5 2 .5 4 0 6-1.5-1.5-3-2-7-2s-5.5.5-7 2c-.5-2-.5-4 0-6-2.5 0-4 2-5 6-1-2-1.5-4.5-1.5-7.5z'
+        }
+        fill={hair}
+      />
+      <path
+        d="M10 60c2-11 11-18 22-18s20 7 22 18z"
+        fill="var(--color-primary)"
+      />
+    </svg>
+  )
+}
 
 export default function Testimonials() {
   // Duplicate content for seamless loop
@@ -44,9 +80,19 @@ export default function Testimonials() {
                 key={`${t.id}-${i}`}
                 className="w-[300px] shrink-0 bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
               >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-sand">
+                    {t.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <DefaultAvatar gender={t.gender} />
+                    )}
+                  </div>
+                  <div className="text-sm font-semibold text-primary">{t.name}</div>
+                </div>
                 <div className="text-gold text-lg mb-2">★★★★★</div>
-                <p className="text-sm text-charcoal/80 mb-3 line-clamp-4">&ldquo;{t.text}&rdquo;</p>
-                <div className="text-sm font-semibold text-primary">&mdash; {t.name}</div>
+                <p className="text-sm text-charcoal/80 line-clamp-4">&ldquo;{t.text}&rdquo;</p>
               </div>
             ))}
           </motion.div>
@@ -55,3 +101,4 @@ export default function Testimonials() {
     </section>
   )
 }
+

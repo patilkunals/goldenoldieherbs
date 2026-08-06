@@ -7,6 +7,7 @@ import SafeImage from '../ui/SafeImage'
 export default function DoctorCards() {
   const [filter, setFilter] = useState<string>('All')
   const [selected, setSelected] = useState<Doctor | null>(null)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const specializations = useMemo(() => {
     const set = new Set<string>()
@@ -21,10 +22,40 @@ export default function DoctorCards() {
 
   function openBooking(doc: Doctor) {
     setSelected(doc)
+    setStatus('idle')
   }
 
   function closeBooking() {
     setSelected(null)
+    setStatus('idle')
+  }
+
+  async function submitBooking(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    const payload = {
+      name: fd.get('name'),
+      phone: fd.get('phone'),
+      date: fd.get('date'),
+      message: fd.get('message'),
+      doctorName: selected?.name,
+    }
+
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/book-appointment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('sent')
+      form.reset()
+      setTimeout(closeBooking, 1200)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -79,15 +110,19 @@ export default function DoctorCards() {
               <button onClick={closeBooking} aria-label="Close" className="text-charcoal/70">✕</button>
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); const fd = new FormData(e.currentTarget); console.log(Object.fromEntries(fd)); closeBooking(); }} className="space-y-4">
+            <form onSubmit={submitBooking} className="space-y-4">
               <input name="name" placeholder="Your name" required className="w-full px-3 py-2 border rounded-md" />
               <input name="phone" placeholder="Phone" required className="w-full px-3 py-2 border rounded-md" />
               <input name="date" type="date" className="w-full px-3 py-2 border rounded-md" />
               <textarea name="message" placeholder="Short message" className="w-full px-3 py-2 border rounded-md" />
               <div className="flex items-center justify-between">
-                <button type="submit" className="px-4 py-2 rounded-md bg-primary !text-sand font-medium">Request Appointment</button>
+                <button type="submit" disabled={status === 'sending'} className="px-4 py-2 rounded-md bg-primary !text-sand font-medium disabled:opacity-60">
+                  {status === 'sending' ? 'Sending…' : 'Request Appointment'}
+                </button>
                 <button type="button" onClick={closeBooking} className="px-4 py-2 rounded-md border">Cancel</button>
               </div>
+              {status === 'sent' && <p className="text-xs text-primary/80">Thanks — our team will reach out shortly.</p>}
+              {status === 'error' && <p className="text-xs text-red-600">Something went wrong. Please try again or call us directly.</p>}
             </form>
           </motion.aside>
         </div>
