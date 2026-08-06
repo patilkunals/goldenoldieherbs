@@ -33,8 +33,7 @@ export default function AmazonProducts() {
                 {p.priceINR && <div className="text-sm text-charcoal/90">₹{p.priceINR}</div>}
               </div>
               <div className="flex items-center gap-3">
-                <a href={p.amazonLink} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary !text-sand text-sm font-medium hover:opacity-90 transition-opacity">Buy on Amazon India</a>
-                {p.b2bAvailable && <span className="text-xs px-2.5 py-1 rounded-full bg-gold text-charcoal font-semibold">B2B</span>}
+                <a href={p.amazonLink} target="_blank" rel="noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary !text-sand text-sm font-medium hover:opacity-90 transition-opacity">Buy on Amazon</a>
               </div>
             </motion.article>
           ))}

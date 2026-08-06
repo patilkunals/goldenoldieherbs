@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="mt-10 bg-primary-dark">
+    <footer id="footer" className="mt-10 bg-primary-dark scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4">

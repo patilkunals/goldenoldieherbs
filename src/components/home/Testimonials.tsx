@@ -29,9 +29,9 @@ export default function Testimonials() {
   const items = [...testimonials, ...testimonials]
 
   return (
-    <section className="py-12 bg-white/40">
+    <section id="testimonials" className="py-12 bg-white/40 scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
-        <h3 className="text-xl font-heading text-charcoal mb-4">Patient Stories</h3>
+        <h3 className="text-xl font-heading text-charcoal mb-4">Testimonials</h3>
 
         <div className="overflow-hidden rounded-lg [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
           <motion.div

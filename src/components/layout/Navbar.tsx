@@ -23,16 +23,17 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-6">
-              <Link href="#pillars" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Clinics</Link>
+              <Link href="#pillars" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">What We Do</Link>
               <Link href="#panchkarma" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Panchkarma</Link>
               <Link href="#specialists" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Specialists</Link>
-              <Link href="#b2b" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">B2B</Link>
               <Link href="#products" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Products</Link>
+              <Link href="#testimonials" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Testimonials</Link>
+              <Link href="#footer" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Contact Us</Link>
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-3">
               <Link href="#consult" className="inline-flex items-center px-4 py-2 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
-              <a href="https://www.amazon.in" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon India</a>
+              <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon</a>
             </div>
 
             <div className="md:hidden flex items-center">
@@ -55,13 +56,14 @@ export default function Navbar() {
         {open && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/60">
-              <Link href="#pillars" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Clinics</Link>
+              <Link href="#pillars" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">What We Do</Link>
               <Link href="#panchkarma" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Panchkarma</Link>
               <Link href="#specialists" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Specialists</Link>
-              <Link href="#b2b" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">B2B</Link>
               <Link href="#products" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Products</Link>
+              <Link href="#testimonials" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Testimonials</Link>
+              <Link href="#footer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Contact Us</Link>
               <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
-              <a href="https://www.amazon.in" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon India</a>
+              <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon</a>
             </div>
           </div>
         )}
