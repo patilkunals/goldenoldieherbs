@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal overflow-hidden">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-[#343837] text-charcoal overflow-hidden">
               <img
-                src="/goldenoldieherbs_logo.jpg"
+                src="/goldenoldieherbs_logo.png"
                 alt="Golden Oldie Herbs logo"
                 className="h-full w-full object-contain"
               />

@@ -12,7 +12,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-white text-charcoal shadow-sm overflow-hidden">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-[#343837] text-charcoal shadow-sm overflow-hidden">
                   <img
                     src="/goldenoldieherbs_logo.png"
                     alt="Golden Oldie Herbs logo"
@@ -24,12 +24,12 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-6">
-              <Link href="#pillars" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">What We Do</Link>
-              <Link href="#panchkarma" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Panchkarma</Link>
-              <Link href="#specialists" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Specialists</Link>
-              <Link href="#products" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Products</Link>
-              <Link href="#testimonials" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Testimonials</Link>
-              <Link href="#footer" className="text-sm text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Contact Us</Link>
+              <Link href="#pillars" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">What We Do</Link>
+              <Link href="#panchkarma" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Panchkarma</Link>
+              <Link href="#specialists" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Specialists</Link>
+              <Link href="#products" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Products</Link>
+              <Link href="#testimonials" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Testimonials</Link>
+              <Link href="#footer" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Contact Us</Link>
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-3">
