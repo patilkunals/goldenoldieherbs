@@ -1,5 +1,5 @@
 "use client"
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 type Gender = 'male' | 'female' | 'boy' | 'girl'
 
@@ -9,12 +9,14 @@ const testimonials: { id: string; name: string; text: string; gender: Gender; im
     name: 'Anjali R.',
     text: 'After Panchkarma therapy I feel renewed — chronic fatigue reduced and digestion improved.',
     gender: 'female',
+    image: '/images/testimonials/anjali.jpg',
   },
   {
     id: 't2',
     name: 'Vikram S.',
     text: 'Excellent care and authentic herbal formulations. Highly recommend Golden Oldie Herbs.',
     gender: 'male',
+    image: '/images/testimonials/vikram.jpg',
   },
   {
     id: 't3',
@@ -60,45 +62,101 @@ function DefaultAvatar({ gender }: { gender: Gender }) {
   )
 }
 
+function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
+  const [failed, setFailed] = useState(false)
+  if (t.image && !failed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={t.image} alt={t.name} className="w-full h-full object-cover" onError={() => setFailed(true)} />
+    )
+  }
+  return <DefaultAvatar gender={t.gender} />
+}
+
 export default function Testimonials() {
-  // Duplicate content for seamless loop
-  const items = [...testimonials, ...testimonials]
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el || paused) return
+    const interval = setInterval(() => {
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        el.scrollBy({ left: 320, behavior: 'smooth' })
+      }
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [paused])
+
+  function scrollByCard(direction: 1 | -1) {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollBy({ left: direction * 320, behavior: 'smooth' })
+  }
 
   return (
     <section id="testimonials" className="py-12 bg-white/40 scroll-mt-[var(--nav-height)]">
       <div className="max-w-7xl mx-auto px-6">
-        <h3 className="text-xl font-heading text-charcoal mb-4">Testimonials</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-heading text-charcoal">Testimonials</h3>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setPaused((p) => !p)}
+              aria-label={paused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
+              className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
+            >
+              {paused ? (
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              ) : (
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
+              )}
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              aria-label="Previous testimonials"
+              className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
+            >
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              aria-label="Next testimonials"
+              className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
+            >
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
+          </div>
+        </div>
 
-        <div className="overflow-hidden rounded-lg [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-          <motion.div
-            className="flex gap-6 items-stretch w-max"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
-          >
-            {items.map((t, i) => (
-              <div
-                key={`${t.id}-${i}`}
-                className="w-[300px] shrink-0 bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-sand">
-                    {t.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
-                    ) : (
-                      <DefaultAvatar gender={t.gender} />
-                    )}
-                  </div>
-                  <div className="text-sm font-semibold text-primary">{t.name}</div>
+        <div
+          ref={scrollerRef}
+          className="flex gap-6 items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {testimonials.map((t) => (
+            <div
+              key={t.id}
+              className="w-[300px] shrink-0 snap-start bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-sand">
+                  <TestimonialAvatar t={t} />
                 </div>
-                <div className="text-gold text-lg mb-2">★★★★★</div>
-                <p className="text-sm text-charcoal/80 line-clamp-4">&ldquo;{t.text}&rdquo;</p>
+                <div className="text-sm font-semibold text-primary">{t.name}</div>
               </div>
-            ))}
-          </motion.div>
+              <div className="text-gold text-lg mb-2">★★★★★</div>
+              <p className="text-sm text-charcoal/80 line-clamp-4">&ldquo;{t.text}&rdquo;</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
+
 

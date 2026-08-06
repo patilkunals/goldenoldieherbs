@@ -78,22 +78,26 @@ export default function DoctorCards() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(doc => (
-            <motion.article key={doc.id} whileHover={{ y: -6 }} className="rounded-2xl p-5 bg-white border border-charcoal/5 hover:border-gold/60 hover:shadow-lg transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <SafeImage src={doc.image} alt={doc.name} className="w-20 h-20 object-cover rounded-xl flex-shrink-0 ring-2 ring-gold/20" />
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-charcoal">{doc.name}</h3>
-                    <div className="text-sm text-charcoal/70">{doc.experienceYears} yrs</div>
-                  </div>
-                  <div className="text-sm text-charcoal/80">{doc.designation}</div>
-                  <div className="mt-3 text-sm text-charcoal/70">{doc.specializations.join(' · ')}</div>
+            <motion.article key={doc.id} whileHover={{ y: -6 }} className="rounded-2xl overflow-hidden bg-white border border-charcoal/5 hover:border-gold/60 hover:shadow-xl transition-all duration-300">
+              <div className="relative h-40">
+                <SafeImage src={doc.image} alt={doc.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4 text-sand">
+                  <h3 className="text-lg font-semibold">{doc.name}</h3>
+                  <div className="text-xs opacity-90">{doc.designation}</div>
                 </div>
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/90 text-primary text-xs font-semibold">{doc.experienceYears} yrs</div>
               </div>
-
-              <div className="mt-4 flex items-center justify-between">
-                <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-full bg-primary !text-sand font-medium text-sm hover:opacity-90 transition-opacity">Book Appointment</button>
-                <a href={`#${doc.id}`} className="text-sm text-primary hover:underline">View Profile</a>
+              <div className="p-5">
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {doc.specializations.map((s) => (
+                    <span key={s} className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">{s}</span>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between">
+                  <button onClick={() => openBooking(doc)} className="px-4 py-2 rounded-full bg-primary !text-sand font-medium text-sm hover:opacity-90 transition-opacity">Book Appointment</button>
+                  <a href={`/doctors/${doc.id}`} className="text-sm text-primary hover:underline">View Profile</a>
+                </div>
               </div>
             </motion.article>
           ))}

@@ -67,9 +67,9 @@ npm run build
 5. **Before deploying**, add the environment variables listed below under Project Settings → Environment Variables (set them for Production, and Preview if you want form testing on preview deployments too).
 6. Click "Deploy".
 
-### Required environment variables for Book Appointment / Request a Callback
+### Required environment variables for Book Appointment / Request a Callback / B2B Inquiry
 
-These two features are implemented as Vercel serverless API routes (`/api/book-appointment` and `/api/request-callback`) that send email via [Resend](https://resend.com). They will not work until these are configured in Vercel:
+These features are implemented as Vercel serverless API routes (`/api/book-appointment`, `/api/request-callback`, and `/api/b2b-inquiry`) that send email via [Resend](https://resend.com). They will not work until these are configured in Vercel:
 
 1. Sign up at [resend.com](https://resend.com) and create an API key.
 2. In Vercel: Project Settings → Environment Variables, add:
@@ -81,7 +81,7 @@ These two features are implemented as Vercel serverless API routes (`/api/book-a
 
 ## Project structure
 
-- `src/app` — app routes, layout, and API routes (`src/app/api/book-appointment`, `src/app/api/request-callback`)
+- `src/app` — app routes, layout, and API routes (`src/app/api/book-appointment`, `src/app/api/request-callback`, `src/app/api/b2b-inquiry`), and the doctor profile pages (`src/app/doctors/[id]`)
 - `src/components/home` — homepage sections (Hero, BentoGrid, Panchkarma, Doctor Cards, Amazon Products, Testimonials, Media, Consult CTA)
 - `src/components/layout` — Navbar and Footer
 - `src/components/ui` — shared UI utilities (e.g. ambient music toggle, smooth scroll, safe image)

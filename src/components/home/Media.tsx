@@ -25,7 +25,7 @@ function Thumb({ id, onPlay }: { id: string; onPlay: (id: string) => void }) {
     <button
       type="button"
       onClick={() => onPlay(id)}
-      className="group relative aspect-video rounded-lg overflow-hidden bg-charcoal/10 focus:outline-none focus:ring-2 focus:ring-primary shrink-0"
+      className="group relative aspect-video w-full block rounded-lg overflow-hidden bg-charcoal/10 focus:outline-none focus:ring-2 focus:ring-primary shrink-0"
       aria-label="Play video"
     >
       <img
