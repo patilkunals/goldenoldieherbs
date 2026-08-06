@@ -1,0 +1,40 @@
+{
+  "name": "goldenoldieherbs",
+  "version": "1.0.0",
+  "description": "Ultra modern website for goldenoldieherbs",
+  "main": "postcss.config.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "tailwind:build": "tailwindcss -i ./src/app/globals.css -o ./public/styles/tailwind.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fetch-images": "node scripts/fetch-images.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-personal:patilkunals/goldenoldieherbs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/node": "26.1.2",
+    "@types/react": "19.2.18",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.25",
+    "tailwindcss": "^4.3.3",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "framer-motion": "^13.0.0",
+    "lenis": "^1.3.26",
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

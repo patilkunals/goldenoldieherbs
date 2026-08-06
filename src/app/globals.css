@@ -1,0 +1,103 @@
+/* Global styles and smooth scrolling for Goldenoldieherbs
+   Fonts: Playfair Display + Cormorant Garamond (headings) + Plus Jakarta Sans (body)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* Tailwind v4 CSS-first theme: these tokens generate bg-primary, text-charcoal,
+   font-heading, etc. utilities automatically. Keep in sync with tailwind.config.cjs
+   (used only for the typography/forms plugins) via @config below. */
+@config "../../tailwind.config.cjs";
+
+@theme {
+  --color-primary: #1E3A2B;
+  --color-primary-dark: #11261D;
+  --color-gold: #D4AF37;
+  --color-gold-muted: #C5A059;
+  --color-sand: #FBF9F5;
+  --color-parchment: #F4EFE6;
+  --color-charcoal: #1F2421;
+  --color-terracotta: #B85B35;
+
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+  --shadow-soft-gold: 0 6px 18px rgba(212, 175, 55, 0.12);
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset for the fixed navbar so anchor jumps and section starts aren't hidden */
+:root {
+  --nav-height: 4.5rem;
+}
+
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color: var(--color-charcoal);
+    background-color: var(--color-sand);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Make anchors inherit color by default and avoid browser focus outline interfering with layout.
+     Note: keep visible focus styles for accessibility when needed; components may add focus rings explicitly. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    color: var(--color-primary);
+  }
+}
+
+/* Utility tokens for components */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-sand);
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 6px 18px rgba(212,175,55,0.12);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-gold-outline {
+  border: 2px solid var(--color-gold);
+  color: var(--color-charcoal);
+  background-color: transparent;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  display: inline-block;
+  text-decoration: none;
+}
