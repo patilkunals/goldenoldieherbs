@@ -7,7 +7,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal">🍃</span>
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal overflow-hidden">
+              <img
+                src="/goldenoldieherbs_logo.jpg"
+                alt="Golden Oldie Herbs logo"
+                className="h-full w-full object-contain"
+              />
+            </span>
             <span className="font-heading text-lg text-sand">Golden Oldie Herbs</span>
           </Link>
           <p className="text-sm text-sand/70">Authentic Ayurvedic care, Panchkarma therapies, and trusted herbal formulations.</p>

@@ -12,9 +12,9 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gold text-charcoal shadow-sm overflow-hidden">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-white text-charcoal shadow-sm overflow-hidden">
                   <img
-                    src="/goldenoldieherbs_logo.jpg"
+                    src="/goldenoldieherbs_logo.png"
                     alt="Golden Oldie Herbs logo"
                     className="h-full w-full object-contain"
                   />
