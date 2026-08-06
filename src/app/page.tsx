@@ -6,6 +6,7 @@ import PanchkarmaHub from '../components/home/PanchkarmaHub'
 import DoctorCards from '../components/home/DoctorCards'
 import AmazonProducts from '../components/home/AmazonProducts'
 import Testimonials from '../components/home/Testimonials'
+import Media from '../components/home/Media'
 import ConsultCTA from '../components/home/ConsultCTA'
 import Footer from '../components/layout/Footer'
 import { motion } from 'framer-motion'
@@ -50,6 +51,10 @@ export default function Page() {
 
         <motion.section variants={sectionVariant} className="py-12">
           <Testimonials />
+        </motion.section>
+
+        <motion.section variants={sectionVariant} className="py-12">
+          <Media />
         </motion.section>
 
         <motion.section variants={sectionVariant}>

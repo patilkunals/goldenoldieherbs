@@ -29,6 +29,7 @@ export default function Navbar() {
               <Link href="#specialists" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Specialists</Link>
               <Link href="#products" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Products</Link>
               <Link href="#testimonials" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Testimonials</Link>
+              <Link href="#media" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Media</Link>
               <Link href="#footer" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Contact Us</Link>
             </div>
 
@@ -62,6 +63,7 @@ export default function Navbar() {
               <Link href="#specialists" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Specialists</Link>
               <Link href="#products" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Products</Link>
               <Link href="#testimonials" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Testimonials</Link>
+              <Link href="#media" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Media</Link>
               <Link href="#footer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Contact Us</Link>
               <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon</a>
