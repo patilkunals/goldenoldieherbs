@@ -3,14 +3,31 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function ConsultCTA() {
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-  function submit(e: React.FormEvent<HTMLFormElement>) {
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const fd = new FormData(e.currentTarget)
-    console.log('Consultation inquiry', Object.fromEntries(fd))
-    setSent(true)
-    e.currentTarget.reset()
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    const payload = {
+      name: fd.get('name'),
+      phone: fd.get('phone'),
+      message: fd.get('concern') ? `Concern: ${fd.get('concern')}` : undefined,
+    }
+
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/request-callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('sent')
+      form.reset()
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -53,12 +70,18 @@ export default function ConsultCTA() {
             <option>Joint & Orthopedic Care</option>
             <option>Digestive Health</option>
           </select>
-          <button type="submit" className="w-full px-4 py-3 rounded-lg bg-primary !text-sand font-semibold hover:opacity-90 transition-opacity">
-            Request a Callback
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            className="w-full px-4 py-3 rounded-lg bg-primary !text-sand font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
+          >
+            {status === 'sending' ? 'Sending…' : 'Request a Callback'}
           </button>
-          {sent && <p className="text-xs text-primary/80 text-center">Thanks — our team will reach out shortly.</p>}
+          {status === 'sent' && <p className="text-xs text-primary/80 text-center">Thanks — our team will reach out shortly.</p>}
+          {status === 'error' && <p className="text-xs text-red-600 text-center">Something went wrong. Please try again or call us directly.</p>}
         </motion.form>
       </div>
     </section>
   )
 }
+

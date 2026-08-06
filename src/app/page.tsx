@@ -9,6 +9,7 @@ import Testimonials from '../components/home/Testimonials'
 import Media from '../components/home/Media'
 import ConsultCTA from '../components/home/ConsultCTA'
 import Footer from '../components/layout/Footer'
+import AmbientMusicToggle from '../components/ui/AmbientMusicToggle'
 import { motion } from 'framer-motion'
 
 const container = {
@@ -65,6 +66,7 @@ export default function Page() {
           <Footer />
         </motion.section>
       </motion.main>
+      <AmbientMusicToggle />
     </SmoothScroll>
   )
 }

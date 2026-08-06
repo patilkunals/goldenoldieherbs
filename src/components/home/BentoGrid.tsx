@@ -53,9 +53,8 @@ export default function BentoGrid() {
                   <p className="text-sm text-charcoal/70">{it.description}</p>
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
-                  <a href={`#${it.id}`} className="text-sm font-medium text-primary group-hover:underline underline-offset-4">Explore &rarr;</a>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold border border-gold/60 text-charcoal">Learn More</span>
+                <div className="mt-8">
+                  <a href={`#${it.id}`} className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold border border-gold/60 text-charcoal hover:bg-gold/10 transition-colors">Explore</a>
                 </div>
               </div>
             </motion.article>

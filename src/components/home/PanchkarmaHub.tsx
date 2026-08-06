@@ -27,13 +27,23 @@ export default function PanchkarmaHub() {
                 type="button"
                 aria-expanded={open === t.id}
                 onClick={() => toggle(t.id)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left"
+                className="w-full flex items-center gap-4 px-6 py-5 text-left"
               >
-                <div>
-                  <div className="text-lg font-semibold text-charcoal">{t.name}</div>
-                  <div className="text-sm text-charcoal/70">Duration: {t.duration} {t.sessionCount ? `· Sessions: ${t.sessionCount}` : ''}</div>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-dark text-sand flex items-center justify-center font-heading text-sm shrink-0 shadow-sm">
+                  {t.name.charAt(0)}
                 </div>
-                <div className="ml-4 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary font-semibold shrink-0">{open === t.id ? '−' : '+'}</div>
+                <div className="flex-1">
+                  <div className="text-lg font-semibold text-charcoal">{t.name}</div>
+                  <div className="mt-1 flex items-center gap-2 text-xs">
+                    <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">{t.duration}</span>
+                    {t.sessionCount && <span className="px-2 py-0.5 rounded-full bg-gold/15 text-charcoal/80 font-medium">{t.sessionCount} sessions</span>}
+                  </div>
+                </div>
+                <div className={`w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 transition-transform duration-300 ${open === t.id ? 'rotate-180' : ''}`}>
+                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </div>
               </button>
 
               {open === t.id && (
