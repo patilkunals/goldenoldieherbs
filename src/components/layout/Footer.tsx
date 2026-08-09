@@ -48,7 +48,7 @@ export default function Footer() {
 
         <div>
           <h4 className="font-semibold text-sand mb-3">Contact &amp; Disclaimer</h4>
-          <p className="text-sm text-sand/70 mb-3">For B2B inquiries or wholesale distribution, use the B2B contact form on the Products section.</p>
+          <p className="text-sm text-sand/70 mb-3">For wholesale distribution inquiries, use the Wholesale Inquiry form in the header or Products section.</p>
           <div className="bg-white/5 border border-white/10 rounded-lg p-3 text-xs text-sand/60">Medical Disclaimer: Ayurvedic treatments vary in outcome. Consult a qualified practitioner before starting any therapy. Information provided for educational purposes only.</div>
         </div>
       </div>

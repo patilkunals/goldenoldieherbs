@@ -54,7 +54,7 @@ export default function AmazonProducts() {
       <div className="max-w-7xl mx-auto px-6">
         <div id="b2b" className="scroll-mt-[var(--nav-height)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <h2 className="text-2xl font-heading text-charcoal">Products</h2>
-          <button onClick={() => setB2bOpen(true)} className="self-start sm:self-auto px-5 py-2.5 rounded-full bg-gold text-charcoal font-semibold shadow-soft-gold hover:-translate-y-0.5 transition-transform">B2B Wholesale Inquiry</button>
+          <button onClick={() => setB2bOpen(true)} className="self-start sm:self-auto px-5 py-2.5 rounded-full bg-gold text-charcoal font-semibold shadow-soft-gold hover:-translate-y-0.5 transition-transform">Wholesale Inquiry</button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -89,7 +89,7 @@ export default function AmazonProducts() {
           <div className="absolute inset-0 bg-black/40" onClick={closeB2B} />
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white rounded-lg p-6 z-10 w-full max-w-2xl">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">B2B Wholesale Inquiry</h3>
+              <h3 className="text-lg font-semibold">Wholesale Inquiry</h3>
               <button onClick={closeB2B} aria-label="Close">✕</button>
             </div>
 

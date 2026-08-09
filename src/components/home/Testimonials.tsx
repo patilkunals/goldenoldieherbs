@@ -162,34 +162,46 @@ function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
 export default function Testimonials() {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
+  const pausedRef = useRef(paused)
   const oneSetWidth = testimonials.length * CARD_WIDTH
-  // Duplicate the set so scrolling past the end reveals more (identical) cards,
-  // then we silently rewind by one set width to create a seamless infinite loop.
+  // Duplicate the set so continuous forward scrolling always has more
+  // (identical) cards ahead — we silently rewind by one set width once past
+  // it, which is imperceptible since the content lines up exactly.
   const items = [...testimonials, ...testimonials]
 
-  function wrapIfNeeded() {
+  useEffect(() => {
+    pausedRef.current = paused
+  }, [paused])
+
+  // Continuous pixel-by-pixel auto-scroll (marquee-style), rather than
+  // discrete card jumps — this is what makes the motion read as smooth
+  // rather than a series of snaps.
+  useEffect(() => {
     const el = scrollerRef.current
     if (!el) return
-    if (el.scrollLeft >= oneSetWidth - 2) {
-      el.scrollLeft -= oneSetWidth
-    } else if (el.scrollLeft < 0) {
-      el.scrollLeft += oneSetWidth
+    let raf: number
+    const SPEED = 0.6 // px per frame (~36px/sec at 60fps)
+
+    function tick() {
+      const node = scrollerRef.current
+      if (node && !pausedRef.current) {
+        node.scrollLeft += SPEED
+        if (node.scrollLeft >= oneSetWidth) {
+          node.scrollLeft -= oneSetWidth
+        }
+      }
+      raf = requestAnimationFrame(tick)
     }
-  }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function advance(direction: 1 | -1) {
     const el = scrollerRef.current
     if (!el) return
     el.scrollBy({ left: direction * CARD_WIDTH, behavior: 'smooth' })
-    window.setTimeout(wrapIfNeeded, 450)
   }
-
-  useEffect(() => {
-    if (paused) return
-    const interval = setInterval(() => advance(1), 3000)
-    return () => clearInterval(interval)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused])
 
   return (
     <section id="testimonials" className="py-12 bg-white/40 scroll-mt-[var(--nav-height)]">
@@ -230,12 +242,12 @@ export default function Testimonials() {
 
         <div
           ref={scrollerRef}
-          className="flex gap-6 items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-6 items-stretch overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {items.map((t, i) => (
             <div
               key={`${t.id}-${i}`}
-              className="w-[300px] shrink-0 snap-start bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
+              className="w-[300px] shrink-0 bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-sand">
