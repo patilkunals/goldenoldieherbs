@@ -53,6 +53,8 @@ export default function Navbar() {
         <div className="hidden md:block border-t border-white/10 bg-white/30 dark:bg-black/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-end gap-3 h-11">
+              <Link href="#consult" className="inline-flex items-center px-4 py-1.5 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
+
               <button
                 type="button"
                 onClick={() => {
@@ -63,7 +65,7 @@ export default function Navbar() {
               >
                 Wholesale Inquiry
               </button>
-              <Link href="#consult" className="inline-flex items-center px-4 py-1.5 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
+              
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon</a>
             </div>
           </div>
@@ -80,6 +82,8 @@ export default function Navbar() {
               <Link href="#testimonials" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Testimonials</Link>
               <Link href="#media" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Media</Link>
               <Link href="#footer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Contact Us</Link>
+              <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
+              
               <button
                 type="button"
                 onClick={() => {
@@ -91,7 +95,7 @@ export default function Navbar() {
               >
                 Wholesale Inquiry
               </button>
-              <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
+              
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon</a>
             </div>
           </div>
