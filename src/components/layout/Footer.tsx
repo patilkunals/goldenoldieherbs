@@ -24,12 +24,12 @@ export default function Footer() {
           </Link>
           <p className="text-sm text-sand/70">Authentic Ayurvedic care, Panchkarma therapies, and trusted herbal formulations.</p>
           <div className="mt-4 text-sm text-sand/60 space-y-1">
-            <button type="button" onClick={() => setShowMap(true)} className="flex items-start gap-1.5 text-left hover:text-sand/90 hover:underline underline-offset-2">
+            <button type="button" onClick={() => setShowMap(true)} className="flex items-start gap-1.5 text-left text-gold hover:text-gold/80">
               <svg viewBox="0 0 24 24" className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 0 1 18 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              <span>Address: {ADDRESS}</span>
+              <span className="underline underline-offset-2 decoration-gold/60">Address: {ADDRESS}</span>
             </button>
             <div>Hours: Mon–Sat 9:00–18:00</div>
             <div>Phone: +91 98765 43210</div>

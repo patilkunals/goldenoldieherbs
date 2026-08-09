@@ -34,6 +34,16 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex md:items-center md:space-x-3">
+              <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(new Event('open-b2b-modal'))
+                  document.getElementById('b2b')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="inline-flex items-center px-3 py-1.5 rounded-md border border-gold text-charcoal text-sm font-semibold hover:bg-gold/10 focus:outline-none focus:ring-0"
+              >
+                B2B Wholesale Inquiry
+              </button>
               <Link href="#consult" className="inline-flex items-center px-4 py-2 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon</a>
             </div>
@@ -65,6 +75,17 @@ export default function Navbar() {
               <Link href="#testimonials" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Testimonials</Link>
               <Link href="#media" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Media</Link>
               <Link href="#footer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Contact Us</Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  window.dispatchEvent(new Event('open-b2b-modal'))
+                  document.getElementById('b2b')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-charcoal border border-gold focus:outline-none focus:ring-0"
+              >
+                B2B Wholesale Inquiry
+              </button>
               <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon</a>
             </div>

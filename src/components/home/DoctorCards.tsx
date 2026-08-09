@@ -66,14 +66,16 @@ export default function DoctorCards() {
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">Our Team</span>
             <h2 className="text-2xl md:text-4xl font-heading text-charcoal">Our Specialists</h2>
           </div>
-          <div className="flex items-center gap-3">
-            <label className="text-sm text-charcoal/80">Filter:</label>
-            <select value={filter} onChange={e => setFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-charcoal/15 focus:border-gold focus:outline-none">
-              {specializations.map(s => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </select>
-          </div>
+          {false && (
+            <div className="flex items-center gap-3">
+              <label className="text-sm text-charcoal/80">Filter:</label>
+              <select value={filter} onChange={e => setFilter(e.target.value)} className="px-3 py-2 rounded-lg border border-charcoal/15 focus:border-gold focus:outline-none">
+                {specializations.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

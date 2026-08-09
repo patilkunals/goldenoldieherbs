@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await sendNotificationEmail({
+      feature: 'book-appointment',
       subject: `New Appointment Request — ${safeName}`,
       html: `
         <h2>New Appointment Request</h2>

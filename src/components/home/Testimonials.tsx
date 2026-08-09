@@ -146,6 +146,8 @@ function DefaultAvatar({ gender }: { gender: Gender }) {
   )
 }
 
+const CARD_WIDTH = 324 // card width (300) + gap (24)
+
 function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
   const [failed, setFailed] = useState(false)
   if (t.image && !failed) {
@@ -160,26 +162,34 @@ function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
 export default function Testimonials() {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
+  const oneSetWidth = testimonials.length * CARD_WIDTH
+  // Duplicate the set so scrolling past the end reveals more (identical) cards,
+  // then we silently rewind by one set width to create a seamless infinite loop.
+  const items = [...testimonials, ...testimonials]
 
-  useEffect(() => {
-    const el = scrollerRef.current
-    if (!el || paused) return
-    const interval = setInterval(() => {
-      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4
-      if (atEnd) {
-        el.scrollTo({ left: 0, behavior: 'smooth' })
-      } else {
-        el.scrollBy({ left: 320, behavior: 'smooth' })
-      }
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [paused])
-
-  function scrollByCard(direction: 1 | -1) {
+  function wrapIfNeeded() {
     const el = scrollerRef.current
     if (!el) return
-    el.scrollBy({ left: direction * 320, behavior: 'smooth' })
+    if (el.scrollLeft >= oneSetWidth - 2) {
+      el.scrollLeft -= oneSetWidth
+    } else if (el.scrollLeft < 0) {
+      el.scrollLeft += oneSetWidth
+    }
   }
+
+  function advance(direction: 1 | -1) {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollBy({ left: direction * CARD_WIDTH, behavior: 'smooth' })
+    window.setTimeout(wrapIfNeeded, 450)
+  }
+
+  useEffect(() => {
+    if (paused) return
+    const interval = setInterval(() => advance(1), 3000)
+    return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused])
 
   return (
     <section id="testimonials" className="py-12 bg-white/40 scroll-mt-[var(--nav-height)]">
@@ -201,7 +211,7 @@ export default function Testimonials() {
             </button>
             <button
               type="button"
-              onClick={() => scrollByCard(-1)}
+              onClick={() => advance(-1)}
               aria-label="Previous testimonials"
               className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
             >
@@ -209,7 +219,7 @@ export default function Testimonials() {
             </button>
             <button
               type="button"
-              onClick={() => scrollByCard(1)}
+              onClick={() => advance(1)}
               aria-label="Next testimonials"
               className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
             >
@@ -222,9 +232,9 @@ export default function Testimonials() {
           ref={scrollerRef}
           className="flex gap-6 items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {testimonials.map((t) => (
+          {items.map((t, i) => (
             <div
-              key={t.id}
+              key={`${t.id}-${i}`}
               className="w-[300px] shrink-0 snap-start bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3">

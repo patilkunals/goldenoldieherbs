@@ -26,20 +26,36 @@ The site includes sections for navigation, hero content, business pillars, Panch
 npm install
 ```
 
-### Environment variables (required for Book Appointment / Request a Callback)
+### Environment variables (required for Book Consultation / Book Appointment / B2B Wholesale Inquiry)
 
 Create a `.env.local` file in the project root for local development:
 
 ```bash
 RESEND_EMAIL_API_KEY=your_resend_api_key_here
-RESEND_TO_ADDRESS=info@goldenoldieherbs.com
+
+# Simplest setup: same recipients for all three forms (Book Consultation,
+# Book Appointment, and B2B Wholesale Inquiry). Comma-separate multiple
+# addresses to notify more than one inbox — all of them will receive every
+# submission from all three forms.
+RESEND_TO_ADDRESS=abc@gmail.com, xyz@gmail.com, pqr@golden.com
+
+# Optional: only needed if a specific form should go to a DIFFERENT list
+# than the shared default above. Leave unset to just use RESEND_TO_ADDRESS
+# for that form.
+# RESEND_TO_BOOK_CONSULTATION=frontdesk@goldenoldieherbs.com
+# RESEND_TO_BOOK_APPOINTMENT=frontdesk@goldenoldieherbs.com
+# RESEND_TO_B2B_INQUIRY=sales@goldenoldieherbs.com
+
 RESEND_FROM_ADDRESS=Golden Oldie Herbs <no-reply@goldenoldieherbs.com>
 ```
 
 | Variable | Required | Description |
 |---|---|---|
-| `RESEND_EMAIL_API_KEY` | **Yes** | API key from your [Resend](https://resend.com) account. Without this, the Book Appointment and Request a Callback forms will fail to send. |
-| `RESEND_TO_ADDRESS` | Recommended | The inbox that should receive appointment/callback submissions. Defaults to `info@goldenoldieherbs.com` if not set — override with your real inbox. |
+| `RESEND_EMAIL_API_KEY` | **Yes** | API key from your [Resend](https://resend.com) account. Without this, the Book Consultation, Book Appointment, and B2B Wholesale Inquiry forms will fail to send. |
+| `RESEND_TO_ADDRESS` | Recommended | Default inbox for all three forms. Supports multiple comma-separated addresses (e.g. `a@x.com, b@x.com`). Used whenever a feature-specific variable below isn't set. Defaults to `info@goldenoldieherbs.com` if not set — override with your real inbox. |
+| `RESEND_TO_BOOK_CONSULTATION` | Optional | Recipient(s) for the "Book a Consultation / Request a Callback" form specifically. Comma-separate for multiple addresses. Falls back to `RESEND_TO_ADDRESS` if unset. |
+| `RESEND_TO_BOOK_APPOINTMENT` | Optional | Recipient(s) for the specialist "Book Appointment" form specifically. Comma-separate for multiple addresses. Falls back to `RESEND_TO_ADDRESS` if unset. |
+| `RESEND_TO_B2B_INQUIRY` | Optional | Recipient(s) for the "B2B Wholesale Inquiry" form specifically. Comma-separate for multiple addresses. Falls back to `RESEND_TO_ADDRESS` if unset. |
 | `RESEND_FROM_ADDRESS` | Optional | The "from" address emails are sent from. Defaults to Resend's shared test sender (`onboarding@resend.dev`), which works for testing but is not suitable for production. Verify your own domain in Resend and set this once ready. |
 
 Never commit `.env.local` or real API keys to the repository.
