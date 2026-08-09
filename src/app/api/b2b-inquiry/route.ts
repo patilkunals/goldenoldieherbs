@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await sendNotificationEmail({
+      feature: 'b2b-inquiry',
       subject: `New B2B Wholesale Inquiry — ${safeCompany}`,
       html: `
         <h2>New B2B Wholesale Inquiry</h2>

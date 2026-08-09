@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await sendNotificationEmail({
+      feature: 'book-consultation',
       subject: `New Callback Request — ${safeName}`,
       html: `
         <h2>New Callback Request</h2>

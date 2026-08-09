@@ -33,11 +33,6 @@ export default function Navbar() {
               <Link href="#footer" className="text-sm font-semibold text-charcoal hover:text-primary transition-colors focus:outline-none focus:ring-0">Contact Us</Link>
             </div>
 
-            <div className="hidden md:flex md:items-center md:space-x-3">
-              <Link href="#consult" className="inline-flex items-center px-4 py-2 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
-              <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon</a>
-            </div>
-
             <div className="md:hidden flex items-center">
               <button aria-label="Toggle menu" onClick={() => setOpen(!open)} className="p-2 rounded-md text-charcoal hover:bg-white/30">
                 {open ? (
@@ -54,6 +49,28 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* Secondary utility bar: action buttons live here so the primary nav row never wraps */}
+        <div className="hidden md:block border-t border-white/10 bg-white/30 dark:bg-black/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-end gap-3 h-11">
+              <Link href="#consult" className="inline-flex items-center px-4 py-1.5 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0">Book Consultation</Link>
+
+              <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(new Event('open-b2b-modal'))
+                  document.getElementById('b2b')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="inline-flex items-center px-4 py-1.5 rounded-md bg-primary !text-sand text-sm font-medium hover:opacity-95 focus:outline-none focus:ring-0"
+              >
+                Wholesale Inquiry
+              </button>
+              
+              <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-1.5 rounded-md bg-gold text-charcoal text-sm font-semibold shadow-sm">Buy on Amazon</a>
+            </div>
+          </div>
+        </div>
+
         {/* Mobile menu */}
         {open && (
           <div className="md:hidden">
@@ -66,6 +83,19 @@ export default function Navbar() {
               <Link href="#media" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Media</Link>
               <Link href="#footer" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-charcoal focus:outline-none focus:ring-0">Contact Us</Link>
               <Link href="#consult" onClick={() => setOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0">Book Consultation</Link>
+              
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  window.dispatchEvent(new Event('open-b2b-modal'))
+                  document.getElementById('b2b')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium !text-white bg-primary focus:outline-none focus:ring-0"
+              >
+                Wholesale Inquiry
+              </button>
+              
               <a href="https://www.amazon.in/stores/page/47B3952E-6FA1-41B3-899B-4331EC8752B8" target="_blank" rel="noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-charcoal bg-gold">Buy on Amazon</a>
             </div>
           </div>

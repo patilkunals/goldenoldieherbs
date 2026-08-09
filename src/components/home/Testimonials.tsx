@@ -146,6 +146,8 @@ function DefaultAvatar({ gender }: { gender: Gender }) {
   )
 }
 
+const CARD_WIDTH = 324 // card width (300) + gap (24)
+
 function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
   const [failed, setFailed] = useState(false)
   if (t.image && !failed) {
@@ -160,25 +162,45 @@ function TestimonialAvatar({ t }: { t: (typeof testimonials)[number] }) {
 export default function Testimonials() {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
+  const pausedRef = useRef(paused)
+  const oneSetWidth = testimonials.length * CARD_WIDTH
+  // Duplicate the set so continuous forward scrolling always has more
+  // (identical) cards ahead — we silently rewind by one set width once past
+  // it, which is imperceptible since the content lines up exactly.
+  const items = [...testimonials, ...testimonials]
 
   useEffect(() => {
-    const el = scrollerRef.current
-    if (!el || paused) return
-    const interval = setInterval(() => {
-      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4
-      if (atEnd) {
-        el.scrollTo({ left: 0, behavior: 'smooth' })
-      } else {
-        el.scrollBy({ left: 320, behavior: 'smooth' })
-      }
-    }, 3000)
-    return () => clearInterval(interval)
+    pausedRef.current = paused
   }, [paused])
 
-  function scrollByCard(direction: 1 | -1) {
+  // Continuous pixel-by-pixel auto-scroll (marquee-style), rather than
+  // discrete card jumps — this is what makes the motion read as smooth
+  // rather than a series of snaps.
+  useEffect(() => {
     const el = scrollerRef.current
     if (!el) return
-    el.scrollBy({ left: direction * 320, behavior: 'smooth' })
+    let raf: number
+    const SPEED = 0.6 // px per frame (~36px/sec at 60fps)
+
+    function tick() {
+      const node = scrollerRef.current
+      if (node && !pausedRef.current) {
+        node.scrollLeft += SPEED
+        if (node.scrollLeft >= oneSetWidth) {
+          node.scrollLeft -= oneSetWidth
+        }
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function advance(direction: 1 | -1) {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollBy({ left: direction * CARD_WIDTH, behavior: 'smooth' })
   }
 
   return (
@@ -201,7 +223,7 @@ export default function Testimonials() {
             </button>
             <button
               type="button"
-              onClick={() => scrollByCard(-1)}
+              onClick={() => advance(-1)}
               aria-label="Previous testimonials"
               className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
             >
@@ -209,7 +231,7 @@ export default function Testimonials() {
             </button>
             <button
               type="button"
-              onClick={() => scrollByCard(1)}
+              onClick={() => advance(1)}
               aria-label="Next testimonials"
               className="w-8 h-8 rounded-full bg-white shadow-sm border border-charcoal/10 flex items-center justify-center text-charcoal hover:bg-sand"
             >
@@ -220,12 +242,12 @@ export default function Testimonials() {
 
         <div
           ref={scrollerRef}
-          className="flex gap-6 items-stretch overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-6 items-stretch overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {testimonials.map((t) => (
+          {items.map((t, i) => (
             <div
-              key={t.id}
-              className="w-[300px] shrink-0 snap-start bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
+              key={`${t.id}-${i}`}
+              className="w-[300px] shrink-0 bg-white p-5 rounded-xl border border-charcoal/10 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-sand">

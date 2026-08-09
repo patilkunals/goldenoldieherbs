@@ -44,9 +44,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Offset for the fixed navbar so anchor jumps and section starts aren't hidden */
+/* Offset for the fixed navbar so anchor jumps and section starts aren't hidden.
+   Desktop header is taller because of the secondary utility action bar (md breakpoint and up). */
 :root {
-  --nav-height: 4.5rem;
+  --nav-height: 4rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-height: 6.75rem;
+  }
 }
 
 section[id] {
